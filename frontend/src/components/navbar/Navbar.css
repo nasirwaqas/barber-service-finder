@@ -1,0 +1,30 @@
+Nav .btn-primary{
+    margin-inline: 2px;
+    background-color: rgb(241, 111, 24);
+}
+.customer-btn{
+    background-color: rgb(236, 180, 26) !important;
+    
+    border-radius: 5px;
+    
+}
+.barber-btn{
+    background-color: rgb(236, 180, 26) !important;
+   
+    border-radius: 5px;
+}
+.admin-btn{
+    background-color: rgb(236, 180, 26) !important;
+    border-radius: 5px;
+}
+.btn-primery{
+   
+    text-decoration: none !important;
+    border-radius: 5px;
+    border-color: black ;
+    margin: 2px;
+}
+.btn-link{
+    text-decoration: none !important;
+    color: rgb(248, 246, 243) !important;
+}
