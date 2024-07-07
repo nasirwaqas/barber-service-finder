@@ -2,11 +2,19 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+<<<<<<< HEAD
 
+=======
+import { login } from '../../utils/login';
+>>>>>>> 8e73524 (add some front end and backend files)
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Barberlogin() {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8e73524 (add some front end and backend files)
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate()
@@ -18,10 +26,25 @@ export default function Barberlogin() {
         email,
         password,
         role: "Barber"
+<<<<<<< HEAD
       });
 
       if (response.data?.Role === "Barber") {
         navigate('/barber/profile/data');
+=======
+      },{
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        }});
+       
+      if (response) {
+        console.log('Login successful',response.data);
+        login(response?.data?.token)
+        // localStorage.setItem('token' ,)
+        if(response.data?.Role==="Barber"){
+        navigate('/barber/home')
+        }
+>>>>>>> 8e73524 (add some front end and backend files)
       } else {
         // Authentication failed, display an error message
         toast.error('Login failed: Incorrect email or password.');

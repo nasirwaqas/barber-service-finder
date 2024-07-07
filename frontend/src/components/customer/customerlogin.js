@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+<<<<<<< HEAD
+=======
+import { login } from '../../utils/login';
+>>>>>>> 8e73524 (add some front end and backend files)
 
 export default function Customerlogin() {
   const [email, setEmail] = useState('');
@@ -21,8 +25,15 @@ export default function Customerlogin() {
       );
       if (response) {
         console.log('Login successful',response.data);
+<<<<<<< HEAD
         if(response.data?.Role==="Customer"){
         navigate('/customer/profile/data')
+=======
+        login(response?.data?.token)
+        // localStorage.setItem('token' ,)
+        if(response.data?.Role==="Customer"){
+        navigate('/customer/home')
+>>>>>>> 8e73524 (add some front end and backend files)
         }
       } else {
        // Authentication failed, display an error message

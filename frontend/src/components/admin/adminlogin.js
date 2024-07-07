@@ -5,6 +5,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+<<<<<<< HEAD
+=======
+import { login } from '../../utils/login';
+>>>>>>> 8e73524 (add some front end and backend files)
 
 export default function Adminlogin() {
   const [email, setEmail] = useState('');
@@ -21,7 +25,12 @@ export default function Adminlogin() {
       });
 
       if (response.data?.Role === "Admin") {
+<<<<<<< HEAD
         navigate('/admin/users/list');
+=======
+        login(response?.data?.token)
+        navigate('/admin/dashboard');
+>>>>>>> 8e73524 (add some front end and backend files)
       } else {
         // Authentication failed, display an error message
         toast.error('Login failed: Incorrect email or password.');

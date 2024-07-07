@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+<<<<<<< HEAD
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -94,3 +95,59 @@ function CustomerList() {
 }
 
 export default CustomerList;
+=======
+import axios from 'axios';
+
+const Profile = () => {
+  const [customerData, setCustomerData] = useState(null);
+  const [userId, setUserId] = useState(/* Set userId to a valid value, or retrieve it from props or context */);
+
+  useEffect(() => {
+    const fetchCustomerData = async () => {
+      try {
+        // Ensure userId is defined and not an empty string or 'undefined'
+        if (!userId || userId === 'undefined') {
+          console.error('Invalid userId:', userId);
+          return;
+        }
+
+        // Fetch customer data using the user token
+        const token = localStorage.getItem('token');
+
+        // Fetch customer data based on the user ID
+        const response = await axios.get(`/user/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.data) {
+          setCustomerData(response.data);
+        }
+      } catch (error) {
+        console.error('Error fetching customer data:', error);
+      }
+    };
+
+    fetchCustomerData();
+  }, [userId]); // Add userId as a dependency to useEffect
+
+  if (!customerData) {
+    return <div>Loading...</div>;
+  }
+
+  const { fullname, email, Role } = customerData;
+
+  return (
+    <div>
+      <h2>Customer Profile</h2>
+      <p>Name: {fullname}</p>
+      <p>Email: {email}</p>
+      <p>Role: {Role}</p>
+      {/* Add more customer data fields as needed */}
+    </div>
+  );
+};
+
+export default Profile;
+>>>>>>> 8e73524 (add some front end and backend files)

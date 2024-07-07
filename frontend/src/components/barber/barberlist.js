@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
@@ -90,5 +91,47 @@ function BarberList({ userRole }) { // Pass the user's role as a prop
     </div>
   );
 }
+=======
+// Frontend profile page
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+const BarberList = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const response = await axios.post('/user/me',null, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        });
+
+        setUser(response.data);
+      } catch (error) {
+        console.error('Error fetching user profile:', error);
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
+
+  return (
+    <div>
+      {user ? (
+        <div>
+          <h1>Welcome, {user.fullname}!</h1>
+          <p>Email: {user.email}</p>
+          <p>Role: {user.Role}</p>
+          {/* Display other user information as needed */}
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
+  );
+};
+>>>>>>> 8e73524 (add some front end and backend files)
 
 export default BarberList;
